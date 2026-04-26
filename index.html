@@ -71,16 +71,56 @@
     }
 
     .hero {
-      min-height: 760px;
-      padding: 170px 60px 80px;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.2) 100%),
-        img("bagr.png");
-      background-size: cover;
-      background-position: center right;
-      display: flex;
-      align-items: center;
-    }
+  min-height: 760px;
+  padding: 160px 60px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background: linear-gradient(180deg, #0b0c0d 0%, #111214 100%);
+}
+
+/* LEVÁ STRANA */
+.hero-left {
+  max-width: 550px;
+  z-index: 2;
+}
+
+/* PRAVÁ STRANA – BAGr */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  object-fit: contain;
+
+  /* 🔥 důležité – aby byl celý vidět */
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: left;
+    padding: 140px 24px 40px;
+  }
+
+  .hero-right {
+    justify-content: center;
+  }
+
+  .hero-right img {
+    max-width: 100%;
+    transform: scale(1);
+  }
+}
 
     .hero-content {
       max-width: 620px;
@@ -343,22 +383,27 @@
   </header>
 
   <section class="hero">
-    <div class="hero-content">
-      <div class="eyebrow">Built for power. Made to perform.</div>
+    <div class="hero-left">
+    <div class="eyebrow">Built for power. Made to perform.</div>
 
-      <h1>Strong Machines.<br>Stronger Future.</h1>
+    <h1>Strong Machines.<br>Stronger Future.</h1>
 
-      <p>
-        BOARIX delivers premium heavy equipment built for tough jobs,
-        demanding terrain and long-term reliability.
-      </p>
+    <p>
+      BOARIX delivers premium heavy equipment built for tough jobs,
+      demanding terrain and long-term reliability.
+    </p>
 
-      <div class="hero-actions">
-        <a href="#" class="btn btn-primary">Get a Quote →</a>
-        <a href="#" class="btn btn-secondary">Find a Dealer</a>
-      </div>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary">Get a Quote →</a>
+      <a href="#" class="btn btn-secondary">Find a Dealer</a>
     </div>
-  </section>
+  </div>
+
+  <div class="hero-right">
+    <img src="hero-bagr.png" alt="BOARIX Excavator">
+  </div>
+
+</section>
 
   <section class="benefits">
     <div class="benefit">
