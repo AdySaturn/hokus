@@ -474,7 +474,17 @@
   background-size: cover;
   background-position: center;
 }
+.machine-img {
+  height: 180px;
+  overflow: hidden;
+}
 
+.machine-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
   </style>
 </head>
@@ -551,15 +561,17 @@
 
     <div class="machine-grid">
       <a href="stroje.html" class="machine-card">
-        <div class="machine-img">
-          <img src="images/minibagr.png" alt="Mini bagr">
-        </div>
-        <div class="bagr"></div>
-        <div class="machine-card-content">
-          <h3>Mini bagry</h3>
-          <p>Kompaktní stroje pro výkopové práce, úpravy pozemků a menší stavby.</p>
-        </div>
-      </a>
+
+  <div class="machine-img">
+    <img src="images/bagr.jpg" alt="Mini bagr">
+  </div>
+
+  <div class="machine-card-content">
+    <h3>Mini bagry</h3>
+    <p>Kompaktní stroje pro výkopové práce, úpravy pozemků a menší stavby.</p>
+  </div>
+
+</a>
 
       <a href="stroje.html" class="machine-card">
         <div class="machine-img"></div>
