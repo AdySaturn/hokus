@@ -3,135 +3,639 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Servis | BOARIX</title>
-<link rel="stylesheet" href="style.css">
-  
+  <title>BOARIX | Stavební stroje</title>
+
+  <style>
+    :root {
+      --black: #070808;
+      --dark: #111312;
+      --dark2: #191a1a;
+      --bronze: #9b6433;
+      --bronze-light: #c18a4c;
+      --white: #ffffff;
+      --muted: #c9c9c9;
+      --border: rgba(255,255,255,0.14);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nav {
+      height: 92px;
+      padding: 0 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(7,8,8,0.96);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--bronze-light);
+    }
+
+    .menu {
+      display: flex;
+      gap: 34px;
+    }
+
+    .menu a {
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .menu a:hover {
+      color: var(--bronze-light);
+    }
+
+    .nav-btn {
+      padding: 16px 26px;
+      background: linear-gradient(135deg, var(--bronze), var(--bronze-light));
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .hero {
+      min-height: 760px;
+      display: flex;
+      align-items: center;
+      padding: 90px 58px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.94), rgba(0,0,0,0.62), rgba(0,0,0,0.22)),
+        url("images/bagr.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .label {
+      color: var(--bronze-light);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 82px);
+      line-height: 1.04;
+      margin-bottom: 28px;
+      font-weight: 950;
+    }
+
+    .hero-text {
+      font-size: 20px;
+      line-height: 1.7;
+      color: #eeeeee;
+      max-width: 640px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 42px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 17px 30px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 900;
+      transition: 0.2s;
+    }
+
+    .btn-bronze {
+      background: linear-gradient(135deg, var(--bronze), var(--bronze-light));
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+    }
+
+    .btn:hover,
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: linear-gradient(180deg, #171818, #0b0c0c);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .benefit {
+      padding: 48px 34px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .benefit:last-child {
+      border-right: none;
+    }
+
+    .benefit strong {
+      display: block;
+      color: var(--bronze-light);
+      font-size: 34px;
+      margin-bottom: 16px;
+    }
+
+    .benefit h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .benefit p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .section {
+      padding: 86px 58px;
+    }
+
+    .section-light {
+      background: #f1eee9;
+      color: #111;
+    }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.12;
+      margin-bottom: 22px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .section-light .section-text {
+      color: #333;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #202121, #111);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 34px;
+      min-height: 230px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--bronze-light);
+    }
+
+    .card .icon {
+      color: var(--bronze-light);
+      font-size: 38px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .machines {
+      background: radial-gradient(circle at top right, #1d1e1e, #070808 62%);
+    }
+
+    .machine-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .machine-card {
+      background: #151616;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+
+    .machine-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--bronze-light);
+    }
+
+    .machine-img {
+      height: 180px;
+      background:
+        linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.32)),
+        url("images/stroj.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .machine-card-content {
+      padding: 24px;
+    }
+
+    .machine-card h3 {
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .machine-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: #151616;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 42px;
+    }
+
+    .about-box ul {
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: linear-gradient(135deg, #7e4f29, #b47a3e);
+      text-align: center;
+    }
+
+    .stat {
+      padding: 52px 24px;
+      border-right: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .stat p {
+      color: #fff4e9;
+    }
+
+    .cta {
+      padding: 80px 58px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.92), rgba(0,0,0,0.58)),
+        url("images/teren.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cta p {
+      color: var(--muted);
+      font-size: 18px;
+      margin-top: 12px;
+    }
+
+    footer {
+      padding: 42px 58px;
+      background: #070808;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 1050px) {
+      .menu {
+        gap: 18px;
+      }
+
+      .benefits,
+      .machine-grid,
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3,
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        height: auto;
+        padding: 22px 24px;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      .hero,
+      .section,
+      .cta,
+      footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .hero {
+        min-height: 690px;
+        background-position: center right;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .benefits,
+      .machine-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit,
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <header class="bx-nav">
-  <a href="index.html" class="bx-logo">BOARI<span>X</span></a>
+  <header class="nav">
+    <a href="index.html" class="logo">BOARI<span>X</span></a>
 
-  <nav class="bx-menu">
-    <a href="index.html">Domů</a>
-    <a href="servis.html">Servis</a>
-  </nav>
+    <nav class="menu">
+      <a href="index.html">Domů</a>
+      <a href="stroje.html">Stroje</a>
+      <a href="servis.html">Servis</a>
+      <a href="prislusenstvi.html">Příslušenství</a>
+      <a href="o-nas.html">O nás</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
 
-  <a href="kontakt.html" class="bx-nav-btn">Poptat cenu</a>
-</header>
+    <a href="kontakt.html" class="nav-btn">Poptat cenu</a>
+  </header>
 
   <section class="hero">
     <div class="hero-content">
-      <p class="label">BOARIX servis & podpora</p>
-      <h1>Servis, který drží stroje v provozu.</h1>
-      <p>
-        Rychlá technická podpora, dostupné náhradní díly a servisní zázemí pro stavební stroje BOARIX.
-        Naším cílem je minimalizovat odstávky a udržet vaši techniku připravenou k práci.
+      <p class="label">BOARIX HEAVY MACHINERY</p>
+      <h1>Stroje pro práci v těžkém terénu.</h1>
+      <p class="hero-text">
+        Technická značka stavebních strojů zaměřená na odolnost, stabilitu,
+        bezpečnost a dostupný servis. BOARIX pomáhá zákazníkům vybrat stroj,
+        který dává smysl pro jejich práci.
       </p>
 
       <div class="buttons">
-        <a href="kontakt.html" class="btn bronze">Odeslat servisní požadavek</a>
-        <a href="#postup" class="btn outline">Jak servis funguje</a>
+        <a href="stroje.html" class="btn btn-bronze">Zobrazit stroje</a>
+        <a href="kontakt.html" class="btn btn-outline">Poptat nabídku</a>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <p class="label">Co zajišťujeme</p>
-    <h2>Kompletní podpora před i po nákupu stroje.</h2>
-    <p class="section-text">
-      BOARIX není jen prodej stroje. Důležitou součástí značky je servis, dostupnost dílů,
-      technická kontrola a férový přístup k zákazníkovi.
-    </p>
+  <section class="benefits">
+    <div class="benefit">
+      <strong>01</strong>
+      <h3>Odolná konstrukce</h3>
+      <p>Stroje připravené na náročné podmínky a každodenní práci v terénu.</p>
+    </div>
 
-    <div class="grid-3">
-      <div class="card">
-        <div class="icon">⚙</div>
-        <h3>Servis strojů</h3>
-        <p>Pomoc při závadách, kontrole stroje, pravidelné údržbě a řešení technických problémů.</p>
-      </div>
+    <div class="benefit">
+      <strong>02</strong>
+      <h3>Dostupný servis</h3>
+      <p>Podpora, náhradní díly a servisní zázemí pro rychlé řešení požadavků.</p>
+    </div>
 
-      <div class="card">
-        <div class="icon">🔩</div>
-        <h3>Náhradní díly</h3>
-        <p>Dostupnost vybraných náhradních dílů a doporučení správného řešení podle konkrétního modelu.</p>
-      </div>
+    <div class="benefit">
+      <strong>03</strong>
+      <h3>Předprodejní kontrola</h3>
+      <p>Každý stroj má před předáním projít kontrolou a základním ověřením.</p>
+    </div>
 
-      <div class="card">
-        <div class="icon">🛡</div>
-        <h3>Předprodejní kontrola</h3>
-        <p>Stroje před předáním prochází kontrolou, aby zákazník dostal techniku připravenou k práci.</p>
-      </div>
+    <div class="benefit">
+      <strong>04</strong>
+      <h3>Férové podmínky</h3>
+      <p>Jasná komunikace, individuální přístup a možnost řešit financování.</p>
     </div>
   </section>
 
-  <section class="section light" id="postup">
-    <p class="label">Postup servisu</p>
-    <h2>Jak probíhá servisní požadavek?</h2>
+  <section class="section machines">
+    <div class="section-head">
+      <p class="label">Naše stroje</p>
+      <h2>Technika připravená pro stavbu, výkop i manipulaci.</h2>
+      <p class="section-text">
+        BOARIX počítá s rozšiřováním nabídky strojů a příslušenství.
+        Zákazník jednoduše najde kategorii, porovná možnosti a odešle poptávku.
+      </p>
+    </div>
 
-    <div class="process">
-      <div class="step">
-        <strong>01</strong>
-        <h3>Kontaktujete nás</h3>
-        <p>Popíšete problém, typ stroje a ideálně přiložíte fotografie nebo video závady.</p>
-      </div>
+    <div class="machine-grid">
+      <a href="stroje.html" class="machine-card">
+        <div class="machine-img"></div>
+        <div class="machine-card-content">
+          <h3>Mini bagry</h3>
+          <p>Kompaktní stroje pro výkopové práce, úpravy pozemků a menší stavby.</p>
+        </div>
+      </a>
 
-      <div class="step">
-        <strong>02</strong>
-        <h3>Posoudíme situaci</h3>
-        <p>Zjistíme, zda je potřeba díl, servisní zásah nebo pouze technické doporučení.</p>
-      </div>
+      <a href="stroje.html" class="machine-card">
+        <div class="machine-img"></div>
+        <div class="machine-card-content">
+          <h3>Nakladače</h3>
+          <p>Praktická technika pro manipulaci s materiálem a práci kolem stavby.</p>
+        </div>
+      </a>
 
-      <div class="step">
-        <strong>03</strong>
-        <h3>Navrhneme řešení</h3>
-        <p>Dostanete konkrétní postup, odhad řešení a další kroky podle dostupnosti dílů.</p>
-      </div>
+      <a href="stroje.html" class="machine-card">
+        <div class="machine-img"></div>
+        <div class="machine-card-content">
+          <h3>Dumpery</h3>
+          <p>Stroje pro převoz materiálu v místech, kam se větší technika nevejde.</p>
+        </div>
+      </a>
 
-      <div class="step">
-        <strong>04</strong>
-        <h3>Vyřešíme požadavek</h3>
-        <p>Cílem je rychlé zprovoznění stroje a minimalizace odstávky při práci.</p>
-      </div>
+      <a href="prislusenstvi.html" class="machine-card">
+        <div class="machine-img"></div>
+        <div class="machine-card-content">
+          <h3>Příslušenství</h3>
+          <p>Lžíce, doplňky a další vybavení podle konkrétního typu práce.</p>
+        </div>
+      </a>
     </div>
   </section>
 
-  <section class="section">
-    <div class="split">
+  <section class="section section-light">
+    <div class="about">
       <div>
-        <p class="label">Pro zákazníky BOARIX</p>
-        <h2>Podpora, na kterou se můžete obrátit.</h2>
+        <p class="label">Proč BOARIX</p>
+        <h2>Nová značka s důrazem na důvěru a technickou podporu.</h2>
         <p class="section-text">
-          Servisní stránka slouží jako jasné místo, kde zákazník pochopí,
-          co má dělat při problému se strojem a jak rychle kontaktovat podporu.
+          BOARIX nechce působit jako levná jednorázová značka.
+          Cílem je stavět na spolehlivosti, dostupnosti dílů,
+          servisu a jasné komunikaci se zákazníkem.
         </p>
       </div>
 
-      <div class="box">
-        <h3>Co si připravit při kontaktu?</h3>
+      <div class="about-box">
         <ul>
-          <li>typ a model stroje,</li>
-          <li>stručný popis problému,</li>
-          <li>fotografie nebo video závady,</li>
-          <li>kontaktní údaje,</li>
-          <li>místo, kde se stroj nachází.</li>
+          <li>předprodejní kontrola strojů,</li>
+          <li>servisní podpora a náhradní díly,</li>
+          <li>možnost poptávky a doporučení stroje,</li>
+          <li>připravenost na budoucí dealerskou síť,</li>
+          <li>technický a důvěryhodný vizuální styl.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <div>
-      <h2>Potřebujete servis nebo díly?</h2>
-      <p>Pošlete nám požadavek a ozveme se vám s dalším postupem.</p>
+  <section class="section">
+    <div class="section-head">
+      <p class="label">Služby BOARIX</p>
+      <h2>Od výběru stroje až po servisní podporu.</h2>
     </div>
 
-    <a href="kontakt.html" class="btn bronze">Kontaktovat servis</a>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">⚙</div>
+        <h3>Výběr stroje</h3>
+        <p>Pomůžeme vybrat vhodný model podle hmotnosti, šířky, výkonu a typu práce.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔩</div>
+        <h3>Servis a díly</h3>
+        <p>Zákazník má jasné místo, kam se obrátit při požadavku na servis nebo díly.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Financování</h3>
+        <p>Možnost řešit nákup stroje individuálně, včetně budoucí nabídky financování.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <strong>24/7</strong>
+      <p>možnost odeslat požadavek</p>
+    </div>
+
+    <div class="stat">
+      <strong>CZ/EU</strong>
+      <p>směr servisní podpory</p>
+    </div>
+
+    <div class="stat">
+      <strong>100%</strong>
+      <p>důraz na kontrolu</p>
+    </div>
+
+    <div class="stat">
+      <strong>BOARIX</strong>
+      <p>technická značka strojů</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <p class="label">Kontakt</p>
+      <h2>Potřebujete poradit s výběrem stroje?</h2>
+      <p>Pošlete nám poptávku a připravíme doporučení podle vašeho využití.</p>
+    </div>
+
+    <a href="kontakt.html" class="btn btn-bronze">Poptat cenu</a>
   </section>
 
   <footer>
-    <p>© 2026 BOARIX. Servis stavebních strojů, náhradní díly a technická podpora.</p>
+    <p>© 2026 BOARIX. Stavební stroje, servis a technická podpora.</p>
   </footer>
 
 </body>
