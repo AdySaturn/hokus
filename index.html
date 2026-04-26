@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOARIX</title>
+
+  <style>
+  :root {
+  --bx-black: #080909;
+  --bx-dark: #111312;
+  --bx-dark-2: #181818;
+  --bx-bronze: #9b6433;
+  --bx-bronze-light: #c18a4c;
+  --bx-white: #ffffff;
+  --bx-muted: #c9c9c9;
+  --bx-border: rgba(255,255,255,0.15);
+}
+
+.boarix-page {
+  background: var(--bx-black);
+  color: var(--bx-white);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+.bx-hero {
+  min-height: 760px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 36%, rgba(0,0,0,0.18) 100%),
+    url("SEM-VLOŽ-URL-OBRÁZKU-BAGRU");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bx-nav {
+  height: 92px;
+  padding: 0 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6,7,7,0.78);
+  backdrop-filter: blur(12px);
+}
+
+.bx-logo {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.bx-logo span {
+  color: var(--bx-bronze-light);
+}
+
+.bx-nav nav {
+  display: flex;
+  gap: 38px;
+}
+
+.bx-nav a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.bx-nav-btn {
+  background: linear-gradient(135deg, var(--bx-bronze), var(--bx-bronze-light));
+  padding: 17px 28px;
+  border-radius: 4px;
+}
+
+.bx-hero-inner {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 120px 42px 140px;
+}
+
+.bx-hero-text {
+  max-width: 620px;
+}
+
+.bx-label {
+  color: var(--bx-bronze-light);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.bx-hero h1 {
+  font-size: clamp(46px, 6vw, 78px);
+  line-height: 1.05;
+  margin: 0 0 30px;
+  font-weight: 950;
+}
+
+.bx-hero p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #eeeeee;
+}
+
+.bx-buttons {
+  display: flex;
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.bx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px 30px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+
+.bx-btn.bronze {
+  background: linear-gradient(135deg, var(--bx-bronze), var(--bx-bronze-light));
+  color: white;
+}
+
+.bx-btn.outline {
+  border: 1px solid var(--bx-border);
+  color: white;
+}
+
+.bx-benefits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: linear-gradient(180deg, #161717, #0b0c0c);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding: 64px 50px;
+}
+
+.bx-benefit {
+  text-align: center;
+  padding: 0 36px;
+  border-right: 1px solid rgba(255,255,255,0.14);
+}
+
+.bx-benefit:last-child {
+  border-right: none;
+}
+
+.bx-icon {
+  font-size: 42px;
+  color: var(--bx-bronze-light);
+  margin-bottom: 20px;
+}
+
+.bx-benefit h3 {
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.bx-benefit p {
+  color: var(--bx-muted);
+  line-height: 1.6;
+}
+
+.bx-about {
+  background: #f1eee9;
+  color: #111;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: center;
+  min-height: 470px;
+  padding: 76px 60px;
+  gap: 50px;
+}
+
+.bx-about-text {
+  max-width: 460px;
+}
+
+.bx-about h2,
+.bx-machines h2,
+.bx-cta h2 {
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.12;
+  margin: 0 0 26px;
+}
+
+.bx-about p {
+  line-height: 1.7;
+}
+
+.bx-about-visual {
+  min-height: 340px;
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)),
+    url("SEM-VLOŽ-URL-OBRÁZKU-STROJŮ");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bx-x {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 240px;
+  font-weight: 950;
+  color: rgba(155,100,51,0.45);
+  z-index: 1;
+}
+
+.bx-machines {
+  padding: 82px 58px 76px;
+  background: radial-gradient(circle at top right, #1a1b1b, #070808 60%);
+}
+
+.bx-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 38px;
+}
+
+.bx-machine-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.bx-card {
+  background: linear-gradient(180deg, #202121, #111);
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 7px;
+  overflow: hidden;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  transition: 0.25s ease;
+}
+
+.bx-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--bx-bronze-light);
+}
+
+.bx-card-img {
+  height: 170px;
+  background:
+    linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.25)),
+    url("SEM-VLOŽ-URL-OBRÁZKU-STROJE");
+  background-size: cover;
+  background-position: center;
+}
+
+.bx-card h3 {
+  padding: 22px 22px 4px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.bx-card p {
+  padding: 0 22px 24px;
+  color: var(--bx-muted);
+}
+
+.bx-card span {
+  position: absolute;
+  right: 22px;
+  bottom: 23px;
+  color: var(--bx-bronze-light);
+  font-size: 28px;
+}
+
+.bx-stats {
+  background: linear-gradient(135deg, #7e4f29, #b47a3e);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 58px;
+  text-align: center;
+}
+
+.bx-stats div {
+  border-right: 1px solid rgba(255,255,255,0.25);
+}
+
+.bx-stats div:last-child {
+  border-right: none;
+}
+
+.bx-stats strong {
+  display: block;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.bx-stats p {
+  margin: 0;
+  color: #fff4e9;
+}
+
+.bx-cta {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.9), rgba(0,0,0,0.55)),
+    url("SEM-VLOŽ-URL-OBRÁZKU-TERÉNU");
+  background-size: cover;
+  background-position: center;
+  padding: 70px 58px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bx-cta p {
+  color: var(--bx-muted);
+  font-size: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .bx-nav nav {
+    display: none;
+  }
+
+  .bx-benefits,
+  .bx-machine-grid,
+  .bx-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bx-about {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .bx-nav {
+    padding: 0 22px;
+  }
+
+  .bx-logo {
+    font-size: 26px;
+  }
+
+  .bx-nav-btn {
+    display: none;
+  }
+
+  .bx-hero {
+    min-height: 680px;
+    background-position: center right;
+  }
+
+  .bx-hero-inner {
+    padding: 90px 24px;
+  }
+
+  .bx-hero p {
+    font-size: 17px;
+  }
+
+  .bx-buttons,
+  .bx-section-head,
+  .bx-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bx-benefits,
+  .bx-machine-grid,
+  .bx-stats {
+    grid-template-columns: 1fr;
+    padding: 45px 24px;
+  }
+
+  .bx-benefit {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.14);
+    padding: 28px 0;
+  }
+
+  .bx-benefit:last-child {
+    border-bottom: none;
+  }
+
+  .bx-about,
+  .bx-machines,
+  .bx-cta {
+    padding: 55px 24px;
+  }
+}b
+  </style>
+
+</head>
+<body>
+
+<div class="boarix-page">
+
+  <section class="bx-hero">
+    <div class="bx-nav">
+      <div class="bx-logo">BOARI<span>X</span></div>
+      <nav>
+        <a href="/stroje">Stroje</a>
+        <a href="/kde-koupit-servis">Servis</a>
+        <a href="/podpora">Příslušenství</a>
+        <a href="/o-boarix">O nás</a>
+        <a href="/kontakt">Kontakt</a>
+      </nav>
+      <a href="/kontakt" class="bx-nav-btn">Poptat cenu</a>
+    </div>
+
+    <div class="bx-hero-inner">
+      <div class="bx-hero-text">
+        <p class="bx-label">Stvořené pro náročné podmínky</p>
+        <h1>Síla. Spolehlivost.<br>Výkon v každém terénu.</h1>
+        <p>
+          BOARIX přináší moderní stavební stroje, které zvládnou víc.
+          Odolná konstrukce, snadný servis a férové podmínky.
+        </p>
+
+        <div class="bx-buttons">
+          <a href="/stroje" class="bx-btn bronze">Zobrazit stroje</a>
+          <a href="/kontakt" class="bx-btn outline">Poptat cenu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bx-benefits">
+    <div class="bx-benefit">
+      <div class="bx-icon">盾</div>
+      <h3>Odolné & spolehlivé</h3>
+      <p>Stroje navržené pro dlouhou životnost v těžkých podmínkách.</p>
+    </div>
+
+    <div class="bx-benefit">
+      <div class="bx-icon">⚙</div>
+      <h3>Servis & podpora</h3>
+      <p>Rychlá dostupnost náhradních dílů a profesionální servis.</p>
+    </div>
+
+    <div class="bx-benefit">
+      <div class="bx-icon">✓</div>
+      <h3>Prověřená kvalita</h3>
+      <p>Každý stroj prochází důkladnou kontrolou a testováním.</p>
+    </div>
+
+    <div class="bx-benefit">
+      <div class="bx-icon">🤝</div>
+      <h3>Férové podmínky</h3>
+      <p>Transparentní jednání, výhodné financování a individuální přístup.</p>
+    </div>
+  </section>
+
+  <section class="bx-about">
+    <div class="bx-about-text">
+      <p class="bx-label">O značce BOARIX</p>
+      <h2>Nová značka.<br>Stejné hodnoty.</h2>
+      <p>
+        BOARIX vznikl z vášně pro techniku a poctivou práci.
+        Naším cílem je přinášet kvalitní stroje za férové ceny
+        a budovat dlouhodobé vztahy se zákazníky.
+      </p>
+      <a href="/o-boarix" class="bx-btn bronze">Více o nás</a>
+    </div>
+
+    <div class="bx-about-visual">
+      <div class="bx-x">X</div>
+    </div>
+  </section>
+
+  <section class="bx-machines">
+    <div class="bx-section-head">
+      <div>
+        <p class="bx-label">Naše stroje</p>
+        <h2>Technika, která pracuje pro vás</h2>
+      </div>
+      <a href="/stroje" class="bx-btn outline bronze-outline">Zobrazit všechny stroje</a>
+    </div>
+
+    <div class="bx-machine-grid">
+      <a href="/stroje" class="bx-card">
+        <div class="bx-card-img"></div>
+        <h3>Minirypadla</h3>
+        <p>1 – 8 tun</p>
+        <span>→</span>
+      </a>
+
+      <a href="/stroje" class="bx-card">
+        <div class="bx-card-img"></div>
+        <h3>Pásová rypadla</h3>
+        <p>8 – 50 tun</p>
+        <span>→</span>
+      </a>
+
+      <a href="/stroje" class="bx-card">
+        <div class="bx-card-img"></div>
+        <h3>Kolové nakladače</h3>
+        <p>1,5 – 5 tun</p>
+        <span>→</span>
+      </a>
+
+      <a href="/stroje" class="bx-card">
+        <div class="bx-card-img"></div>
+        <h3>Smykem řízené nakladače</h3>
+        <p>0,5 – 1 tun</p>
+        <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="bx-stats">
+    <div>
+      <strong>200+</strong>
+      <p>Dodaných strojů</p>
+    </div>
+    <div>
+      <strong>98 %</strong>
+      <p>Spokojených zákazníků</p>
+    </div>
+    <div>
+      <strong>24/7</strong>
+      <p>Servisní podpora</p>
+    </div>
+    <div>
+      <strong>Evropa</strong>
+      <p>Působíme v celé Evropě</p>
+    </div>
+  </section>
+
+  <section class="bx-cta">
+    <div>
+      <h2>Máte dotaz nebo zájem o nabídku?</h2>
+      <p>Ozvěte se nám – rádi vám pomůžeme najít správné řešení.</p>
+    </div>
+    <a href="/kontakt" class="bx-btn bronze">Kontaktujte nás</a>
+  </section>
+
+</div>
+
+</body>
+</html>
